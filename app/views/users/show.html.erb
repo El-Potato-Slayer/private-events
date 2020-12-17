@@ -1,8 +1,28 @@
-<p id="notice"><%= notice %></p>
-
-<% @events.each do |event| %>
-  <p><%= event.title %></p>
-<% end %>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', events_path %>
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  <% @events.each do |event| %>
+    <div class="col">
+      <div class="card h-100 border-success p-0">
+        <div class="card-header">
+          <%= event.title %>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><%= event.description %></p>
+          <small class="card-text"><%= event.date.strftime('%B %d, %Y %H:%M') %></small>
+          <br>
+          <small class="card-text"><%= event.location %></small>
+          <br>
+          <%= link_to 'Show', event, class: "btn btn-success" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div>
+    <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary m-1" %>
+    <%= link_to events_path, class: "btn btn-primary my-3" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm9.5 8.5a.5.5 0 0 0 0-1H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5z"/>
+      </svg>
+      Back
+    <% end %>
+  </div>
+</div>
