@@ -13,19 +13,12 @@
 ActiveRecord::Schema.define(version: 2020_12_17_143915) do
 
   create_table "attendees", force: :cascade do |t|
-    t.integer "users"
-    t.integer "events"
+    t.integer "user_id"
+    t.integer "event_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "event_attendee", force: :cascade do |t|
-    t.integer "users_id"
-    t.integer "events_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["events_id"], name: "index_event_attendee_on_events_id"
-    t.index ["users_id"], name: "index_event_attendee_on_users_id"
+    t.index ["event_id"], name: "index_attendees_on_event_id"
+    t.index ["user_id"], name: "index_attendees_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
