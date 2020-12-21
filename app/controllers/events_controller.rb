@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
-  before_action :authorize, only: %i[create destroy update edit new]
+  # before_action :authorize, only: %i[create destroy update edit new]
+  before_action :authorize, except: %i[index show]
 
   # GET /events
   # GET /events.json
@@ -27,7 +28,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = current_user.events.new(event_params)
+    @event = current_user.created_events.new(event_params)
 
     respond_to do |format|
       if @event.save
@@ -62,6 +63,16 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def enroll
+    @event = Event.find(params[:id])
+      unless @event.attendees.include?(current_user)
+        @event.attendees << current_user
+        redirect_to @event, notice: 'You have successfully enrolled for this event'
+      else
+        redirect_to @event, alert: "You are already enrolled to attend this event"
+      end
   end
 
   private

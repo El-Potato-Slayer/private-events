@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_17_143915) do
+ActiveRecord::Schema.define(version: 2020_12_20_033840) do
 
-  create_table "attendees", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "event_id"
+  create_table "event_attendees", force: :cascade do |t|
+    t.integer "attendee_id", null: false
+    t.integer "enrolled_event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_id"], name: "index_attendees_on_event_id"
-    t.index ["user_id"], name: "index_attendees_on_user_id"
+    t.index ["attendee_id"], name: "index_event_attendees_on_attendee_id"
+    t.index ["enrolled_event_id"], name: "index_event_attendees_on_enrolled_event_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_143915) do
     t.string "title"
     t.text "description"
     t.string "location"
-    t.integer "user_id"
+    t.integer "creator_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -38,4 +38,6 @@ ActiveRecord::Schema.define(version: 2020_12_17_143915) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "event_attendees", "events", column: "enrolled_event_id"
+  add_foreign_key "event_attendees", "users", column: "attendee_id"
 end
