@@ -1,5 +1,6 @@
-<div class="row row-cols-1 row-cols-md-4 g-4 mt-4">
-  <% @events.each do |event| %>
+<h1 class="mt-1">Upcoming Events</h1>
+<div class="row row-cols-1 row-cols-md-4 g-4 mt-1">
+  <% @upcoming_events.each do |event| %>
     <div class="col">
       <div class="card h-100 border-success p-0">
         <div class="card-header">
@@ -12,6 +13,27 @@
           <small class="card-text"><%= event.location %></small>
           <br>
           <%= link_to 'Show', event, class: "btn btn-success" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<h1 class="mt-1">Past Events</h1>
+<div class="row row-cols-1 row-cols-md-4 g-4 mt-1">
+  <% @past_events.each do |event| %>
+    <div class="col text-muted">
+      <div class="card h-100 border-success p-0">
+        <div class="card-header">
+          <%= event.title %>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><%= event.description %></p>
+          <small class="card-text"><%= event.date.strftime('%B %d, %Y %H:%M') %></small>
+          <br>
+          <small class="card-text"><%= event.location %></small>
+          <br>
+          <%= link_to 'Show', event, class: "btn btn-success disabled" %>
         </div>
       </div>
     </div>

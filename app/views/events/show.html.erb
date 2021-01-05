@@ -12,7 +12,9 @@
         <br>
         <small class="card-text"><%= @event.location %></small>
         <br>
-        <%= link_to 'Enroll', {controller: "events", action: "enroll", id: @event}, class: "btn btn-success" if current_user.id != @event.creator.id %>
+        <% if current_user != nil %>
+          <%= link_to 'Enroll', {controller: "events", action: "enroll", id: @event}, class: "btn btn-success" if current_user.id != @event.creator.id %>
+        <% end %>
         <div class="my-4">
         <h5>Attendees</h5>
         <ul class="list-group">
