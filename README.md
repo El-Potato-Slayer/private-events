@@ -4,7 +4,7 @@ This is an event management application where a logged in user is able to create
 
 ![image](https://user-images.githubusercontent.com/43865875/103894987-57cb8800-50f8-11eb-8b52-9bf8e6994e7b.png)
 
-[Live demo link](https://tranquil-island-76594.herokuapp.com/)
+[Live demo link](https://hidden-scrubland-00629.herokuapp.com/events)
 
 
 ## Built With
