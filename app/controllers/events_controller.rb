@@ -24,8 +24,7 @@ class EventsController < ApplicationController
   end
 
   # GET /events/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /events
   # POST /events.json
@@ -69,22 +68,23 @@ class EventsController < ApplicationController
 
   def enroll
     @event = Event.find(params[:id])
-      unless @event.attendees.include?(current_user)
-        @event.attendees << current_user
-        redirect_to @event, notice: 'You have successfully enrolled for this event'
-      else
-        redirect_to @event, alert: "You are already enrolled to attend this event"
-      end
+    if @event.attendees.include?(current_user)
+      redirect_to @event, alert: 'You are already enrolled to attend this event'
+    else
+      @event.attendees << current_user
+      redirect_to @event, notice: 'You have successfully enrolled for this event'
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def event_params
-      params.fetch(:event, {}).permit(:date, :title, :description, :location, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def event_params
+    params.fetch(:event, {}).permit(:date, :title, :description, :location, :user_id)
+  end
 end
