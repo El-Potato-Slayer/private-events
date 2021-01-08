@@ -8,9 +8,6 @@ RSpec.describe EventAttendee, type: :model do
                            creator_id: user.id)
       attendance = EventAttendee.create(attendee_id: user.id, enrolled_event_id: event.id)
       expect(attendance.attendee.name).to eq('Test User')
-      expect(attendance.attendee.email).to eq('test@test.com')
-      expect(attendance.enrolled_event.title).to eq('Test Event')
-      expect(attendance.enrolled_event.location).to eq('Test')
     end
   end
 end
