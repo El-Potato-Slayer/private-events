@@ -30,6 +30,7 @@ To get this project up and running locally, you must already have Ruby, and Ruby
 4. Run ```cd private-events```.
 5. Run ```bundle install```.
 6. Run ```yarn install```.
+7. Run ```rails db:create```.
 7. Run ```rails db:migrate```.
 8. Run ```rails server``` or ```rails s```.
 
