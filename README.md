@@ -41,8 +41,6 @@ To get this project up and running locally, you must already have Ruby, and Ruby
 
 - GitHub: [@sinansevgi](https://github.com/sinansevgi)
 - LinkedIn: [@sinansevgi](https://www.linkedin.com/in/sinan-s-52559437/)
-- Twitter: [@nativeofcybers1](https://twitter.com/nativeofcybers1)
-
 
 👤 **Chad-Leigh Van Wyk**
 
